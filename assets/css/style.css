@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('../images/forrest.jpg');
+    background-size: cover;
+}
+
+.welcome {
+    margin: 50px;
+    padding: 32px 64px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.welcome h1 {
+    margin-bottom: 20px;
+}
+
+.welcome img {
+    display: inline;
+}
+
+.enter-name input {
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid gray;
+    padding: 10px 30px;
+    border-radius: 16px;
+}
+
+.enter-name button {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 0px 32px;
+    border-radius: 16px;
+    font-size: 1.5em;
+    color: green;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+.enter-name button:hover {
+    transform: scale(1.1);
+}
+
+.points {
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.76);
+}
+
+.green {
+    color: green;
+}
+
+.brown {
+    color: brown;
+}
+
+.red {
+    color: red;
+}
+
+.bird-points img{
+    width: 64px;
+}
+
+.bird-points{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
