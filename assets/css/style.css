@@ -1,3 +1,6 @@
+:root{
+    --transparentGray: rgba(255, 255, 255, 0.5);
+}
 * {
     margin: 0;
     padding: 0;
@@ -22,14 +25,40 @@ body {
 }
 .game-container {
     display: flex;
-    transform: translateY(100%);
-    justify-content: center;
-    align-items: center;
+    /* TODO uncomment */
+    /* transform: translateY(100%); */
     flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
     height: 100vh;
     background-image: url('../images/lake.jpg');
     background-size: cover;
     transition: transform 0.1s ease;
+}
+
+.game{
+    height: 100%;
+    width: 100%;
+}
+.game img{
+    position: absolute;
+    top: 50px;
+ width: 64px;
+}
+
+.hud{
+    display: flex;
+    width: 100%;
+    padding-top: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game-data{
+    color: rgb(0, 156, 156);
+    background-color: var(--transparentGray);
+    padding: 10px 20px;
+    border-radius: 16px;
 }
 
 .welcome {
@@ -54,14 +83,14 @@ body {
 
 .enter-name input {
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--transparentGray);
     border: 1px solid gray;
     padding: 10px 30px;
     border-radius: 16px;
 }
 
 .enter-name button {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--transparentGray);
     padding: 0px 32px;
     border-radius: 16px;
     font-size: 1.5em;
