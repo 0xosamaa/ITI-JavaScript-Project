@@ -5,6 +5,11 @@
     font-family: Roboto, sans-serif;
 }
 
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -13,6 +18,18 @@
     height: 100vh;
     background-image: url('../images/forrest.jpg');
     background-size: cover;
+    transition: transform 0.1s ease;
+}
+.game-container {
+    display: flex;
+    transform: translateY(100%);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('../images/lake.jpg');
+    background-size: cover;
+    transition: transform 0.1s ease;
 }
 
 .welcome {
@@ -74,11 +91,11 @@
     color: red;
 }
 
-.bird-points img{
+.bird-points img {
     width: 64px;
 }
 
-.bird-points{
+.bird-points {
     width: 100%;
     display: flex;
     justify-content: center;

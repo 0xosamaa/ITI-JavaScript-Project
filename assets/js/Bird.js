@@ -1,5 +1,3 @@
 export class Bird {
-    constructor() {
-
-    }
+    constructor() {}
 }
