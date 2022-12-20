@@ -4,10 +4,16 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="shortcut icon"
+            href="assets/images/red_bird_up.png"
+            type="image/x-icon"
+        />
         <link rel="stylesheet" href="assets/css/style.css" />
         <title>Bird Shooter</title>
     </head>
     <body>
+        <!-- TODO uncomment -->
         <div class="container">
             <div class="enter-name welcome">
                 <h1>Enter Your Name</h1>
@@ -15,7 +21,7 @@
                 <button id="go">Go</button>
             </div>
             <div class="instructions welcome">
-                <h1>Bird Shooting Points</h1>
+                <h1 class="green points">Score 500 Points To Win!</h1>
                 <div class="bird-points">
                     <img src="assets/images/green_bird_up.png" alt="" />
                     <h1 class="green points">+5 Points</h1>
@@ -33,11 +39,16 @@
         <div class="game-container">
             <div class="hud">
                 <div class="game-data player-name"><h3>Player:</h3></div>
-                <div class="game-data player-score"><h3>Score:</h3></div>
-                <div class="game-data player-time"><h3>Time Limit:</h3></div>
-                <div class="game-data player-birds"><h3>Birds Killed:</h3></div>
+                <div class="game-data player-score"><h3>Score: 0</h3></div>
+                <div class="game-data player-time"><h3>Time Limit: 60</h3></div>
+                <div class="game-data killed-birds">
+                    <h3>Birds Killed: 0</h3>
+                </div>
             </div>
+
+            <div class="game"></div>
         </div>
+
         <script type="module" src="assets/js/app.js"></script>
     </body>
 </html>
