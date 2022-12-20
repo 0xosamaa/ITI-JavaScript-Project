@@ -1,3 +1,6 @@
+:root {
+    --transparentGray: rgba(255, 255, 255, 0.5);
+}
 * {
     margin: 0;
     padding: 0;
@@ -22,14 +25,40 @@ body {
 }
 .game-container {
     display: flex;
-    transform: translateY(100%);
-    justify-content: center;
-    align-items: center;
+    /* TODO uncomment */
+    /* transform: translateY(100%); */
     flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
     height: 100vh;
     background-image: url('../images/lake.jpg');
     background-size: cover;
     transition: transform 0.1s ease;
+}
+
+.game {
+    height: 100%;
+    width: 100%;
+}
+.game img {
+    position: absolute;
+    top: 50px;
+    width: 64px;
+}
+
+.hud {
+    display: flex;
+    width: 100%;
+    padding-top: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game-data {
+    color: rgb(0, 156, 156);
+    background-color: var(--transparentGray);
+    padding: 10px 20px;
+    border-radius: 16px;
 }
 
 .welcome {
@@ -54,14 +83,14 @@ body {
 
 .enter-name input {
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--transparentGray);
     border: 1px solid gray;
     padding: 10px 30px;
     border-radius: 16px;
 }
 
 .enter-name button {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--transparentGray);
     padding: 0px 32px;
     border-radius: 16px;
     font-size: 1.5em;
@@ -91,6 +120,10 @@ body {
     color: red;
 }
 
+.bird {
+    transition: left 0.1s ease;
+}
+
 .bird-points img {
     width: 64px;
 }
@@ -100,4 +133,48 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0, 0, 0); 
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modal-content p {
+    text-align: center;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
