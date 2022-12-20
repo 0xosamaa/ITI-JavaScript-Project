@@ -11,23 +11,8 @@ const player_name_hud = document.querySelector('.player-name');
 const howtowin = document.querySelector('.howtowin');
 
 const points_to_win = 50;
-howtowin.innerText = `Score ${points_to_win} To Win`;
+howtowin.innerText = `Score ${points_to_win} Points To Win!`;
 
-const save_score = (player, score) => {
-    let data = {
-        player,
-        score,
-    };
-    var a = [];
-    // Parse the serialized data back into an aray of objects
-    a = JSON.parse(localStorage.getItem('session')) || [];
-    // Push the new data (whether it be an object or anything else) onto the array
-    a.push(data);
-    // Alert the array value
-    alert(a); // Should be something like [Object array]
-    // Re-serialize the array back into a string and store it in localStorage
-    localStorage.setItem('session', JSON.stringify(a));
-};
 
 // Start game if name entered
 const start_game = () => {
@@ -115,5 +100,18 @@ const start_game = () => {
         }
     }, 500);
 };
+
+// Save new score in local storage
+const save_score = (player, score) => {
+    let data = {
+        player,
+        score,
+    };
+    var a = [];
+    a = JSON.parse(localStorage.getItem('session')) || [];
+    a.push(data);
+    localStorage.setItem('session', JSON.stringify(a));
+};
+
 
 go_button.addEventListener('click', start_game);

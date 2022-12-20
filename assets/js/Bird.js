@@ -92,8 +92,6 @@ export class Bird {
             killed_birds_hud.firstChild.innerText = `Birds Killed: ${
                 Bird.#killed_count
             }`;
-            console.log(player_score_hud.firstChild);
-            console.log(killed_birds_hud.firstChild);
             this.bird.remove();
         });
 
@@ -139,9 +137,6 @@ export class Bird {
                 clearInterval(move_bird_id);
             }
             if (Bird.time <= 0) clearInterval(move_bird_id);
-
-            // console.log('Current count:', Bird.current_count);
-            // console.log('Killed count:', Bird.killed_count);
         }, 100);
     };
 }

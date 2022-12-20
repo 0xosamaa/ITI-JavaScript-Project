@@ -40,7 +40,6 @@ export class Bomb {
                     Bird.score -= 10;
                 }
                 Bird.killed_count++;
-                console.log(Bird.killed_count);
                 bird.remove();
             });
             this.bomb.children[0].style.display = 'none';
