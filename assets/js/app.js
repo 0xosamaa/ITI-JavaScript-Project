@@ -1,4 +1,5 @@
 import { Bird } from './Bird.js';
+import { Bomb } from './Bomb.js';
 
 const go_button = document.querySelector('button#go');
 const name_input = document.querySelector('input[name=name]');
@@ -7,7 +8,10 @@ const instructions = document.querySelector('.instructions');
 const container = document.querySelector('.container');
 const game_container = document.querySelector('.game-container');
 const player_name_hud = document.querySelector('.player-name');
+const howtowin = document.querySelector('.howtowin');
 
+const points_to_win = 50;
+howtowin.innerText = `Score ${points_to_win} To Win`;
 const start_game = () => {
     if (!name_input.value) return;
     let music = new Audio('assets/music/Harmony.mp3');
@@ -26,6 +30,7 @@ const start_game = () => {
         container.style.transform = `translateY(${y}%)`;
         game_container.style.transform = `translateY(${y}%)`;
         if (y == -100) {
+            Bird.countdown();
             clearInterval(id);
         }
     };
@@ -37,7 +42,7 @@ const start_game = () => {
             const modal = document.createElement('div');
             const modal_content = document.createElement('div');
             const modal_close = document.createElement('span');
-            const modal_text = document.createElement('p');
+            let modal_text = document.createElement('p');
 
             clearInterval(spawn_interval_id);
             music.pause();
@@ -57,19 +62,25 @@ const start_game = () => {
                 window.location.reload();
             };
 
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-                window.location.reload();
-            };
+            // window.onclick = function (event) {
+            //     if (event.target == modal) {
+            //         modal.style.display = 'none';
+            //     }
+            //     window.location.reload();
+            // };
 
-            if (Bird.score >= 500) {
+            if (Bird.score >= points_to_win) {
                 music = new Audio('assets/music/win_gameover.wav');
-                modal_text.innerText = 'You Win';
+                modal_text.innerText = player_name + ' You Win';
+                modal_text = document.createElement('p');
+                modal_text.innerText = 'Score: ' + Bird.score;
+                modal_content.append(modal_text);
             } else {
                 music = new Audio('assets/music/lose_gameover.wav');
-                modal_text.innerText = 'You Lose';
+                modal_text.innerText = player_name + ' You Lose';
+                modal_text = document.createElement('p');
+                modal_text.innerText = 'Score: ' + Bird.score;
+                modal_content.append(modal_text);
             }
             modal.style.display = 'block';
             music.play();
@@ -77,8 +88,9 @@ const start_game = () => {
     }, 500);
 
     setTimeout(() => {
-        Bird.countdown();
-    }, 2000);
+        const bomb = new Bomb();
+        bomb.move();
+    }, Math.floor(Math.random() * Bird.time) * 1000);
 };
 
 go_button.addEventListener('click', start_game);

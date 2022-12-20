@@ -2,7 +2,7 @@ export class Bird {
     static #current_count = 0;
     static #killed_count = 0;
     static #score = 0;
-    static #time = 60;
+    static #time = 20;
     static get current_count() {
         return Bird.#current_count;
     }
@@ -14,6 +14,12 @@ export class Bird {
     }
     static get time() {
         return Bird.#time;
+    }
+    static set score(score) {
+        Bird.#score = score;
+    }
+    static set killed_count(killed_count) {
+        Bird.#killed_count = killed_count;
     }
 
     static countdown = () => {
@@ -33,7 +39,6 @@ export class Bird {
         const killed_birds_hud = document.querySelector('.killed-birds');
         const player_score_hud = document.querySelector('.player-score');
 
-        Bird.#current_count++;
         if (type == 1) {
             this.bird_up = 'assets/images/green_bird_up.png';
             this.bird_down = 'assets/images/green_bird_down.png';
@@ -58,6 +63,7 @@ export class Bird {
         bird_down.src = this.bird_down;
         bird_down.style.display = 'none';
         this.bird.classList.add('bird');
+        this.bird.dataset.birdType = type;
         this.bird.append(bird_up);
         this.bird.append(bird_down);
         document.querySelector('.game').append(this.bird);
@@ -83,8 +89,12 @@ export class Bird {
             killed_birds_hud.firstChild.innerText = `Birds Killed: ${
                 Bird.#killed_count
             }`;
+            console.log(player_score_hud.firstChild);
+            console.log(killed_birds_hud.firstChild);
             this.bird.remove();
         });
+
+        Bird.#current_count++;
     }
 
     static spawn_random = () => {
