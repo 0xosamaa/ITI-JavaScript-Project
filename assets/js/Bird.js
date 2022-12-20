@@ -2,7 +2,7 @@ export class Bird {
     static #current_count = 0;
     static #killed_count = 0;
     static #score = 0;
-    static #time = 20;
+    static #time = 60;
     static get current_count() {
         return Bird.#current_count;
     }
@@ -22,6 +22,7 @@ export class Bird {
         Bird.#killed_count = killed_count;
     }
 
+    // Time counter
     static countdown = () => {
         const player_time_hud = document.querySelector('.player-time');
         const game_time_id = setInterval(() => {
@@ -34,6 +35,7 @@ export class Bird {
     };
 
     constructor(type) {
+        // Create bird dom element depending on type at random Y positions
         const bird_up = document.createElement('img');
         const bird_down = document.createElement('img');
         const killed_birds_hud = document.querySelector('.killed-birds');
@@ -74,6 +76,7 @@ export class Bird {
         this.bird.children[0].draggable = false;
         this.bird.children[1].draggable = false;
 
+        // On click update stats
         this.bird.addEventListener('click', () => {
             this.alive = false;
             if (type == 1) {
@@ -97,6 +100,7 @@ export class Bird {
         Bird.#current_count++;
     }
 
+    // Spawn a random type of bird and make it fly 
     static spawn_random = () => {
         let random_bird = Math.floor(Math.random() * 3) + 1;
         setTimeout(() => {
@@ -106,6 +110,7 @@ export class Bird {
         }, 2000);
     };
 
+    // Make this bird flop its wings
     flop_wings = () => {
         let wings_up = true;
         const id = setInterval(() => {
@@ -122,6 +127,7 @@ export class Bird {
         }, 300);
     };
 
+    // Make this bird fly across the screen
     move = () => {
         const move_bird_id = setInterval(() => {
             this.positionX += 20;

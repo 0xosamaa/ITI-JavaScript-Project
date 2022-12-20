@@ -12,6 +12,8 @@ const howtowin = document.querySelector('.howtowin');
 
 const points_to_win = 50;
 howtowin.innerText = `Score ${points_to_win} To Win`;
+
+// Start game if name entered
 const start_game = () => {
     if (!name_input.value) return;
     let music = new Audio('assets/music/Harmony.mp3');
@@ -25,19 +27,26 @@ const start_game = () => {
     instructions.style.display = 'none';
     game_container.style.display = 'flex';
 
-    const move_bg_up = () => {
+    // Slide background up and start the game
+    const TRANSFORM_PERCENT = -100;
+    const id = setInterval(() => {
         y -= 5;
         container.style.transform = `translateY(${y}%)`;
         game_container.style.transform = `translateY(${y}%)`;
-        if (y == -100) {
+        if (y <= -TRANSFORM_PERCENT) {
             Bird.countdown();
+            setTimeout(() => {
+                const bomb = new Bomb();
+                bomb.move();
+            }, Math.floor(Math.random() * Bird.time) * 1000);
             clearInterval(id);
         }
-    };
-    const id = setInterval(move_bg_up, 100);
+    }, 100);
 
+    //Spawn random type of bird every 500ms
     const spawn_interval_id = setInterval(() => {
         Bird.spawn_random();
+        //Gameover
         if (Bird.time <= 0) {
             const modal = document.createElement('div');
             const modal_content = document.createElement('div');
@@ -69,6 +78,7 @@ const start_game = () => {
             //     window.location.reload();
             // };
 
+            // Check win or lose
             if (Bird.score >= points_to_win) {
                 music = new Audio('assets/music/win_gameover.wav');
                 modal_text.innerText = player_name + ' You Win';
@@ -86,11 +96,6 @@ const start_game = () => {
             music.play();
         }
     }, 500);
-
-    setTimeout(() => {
-        const bomb = new Bomb();
-        bomb.move();
-    }, Math.floor(Math.random() * Bird.time) * 1000);
 };
 
 go_button.addEventListener('click', start_game);

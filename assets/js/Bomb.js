@@ -2,7 +2,8 @@ import { Bird } from './Bird.js';
 
 export class Bomb {
     constructor() {
-        const width = 64;
+        // Create bomb dom element at random X position
+        const width = 128;
         this.bomb = document.createElement('div');
         let img = document.createElement('img');
         this.bomb.classList.add('bomb');
@@ -25,8 +26,10 @@ export class Bomb {
         this.bomb.children[1].draggable = false;
 
         document.querySelector('.game').append(this.bomb);
+        const explosion = new Audio('assets/music/explosion.wav');
 
         this.bomb.addEventListener('click', () => {
+            explosion.play();
             let all_current_birds = document.querySelectorAll('.bird');
             all_current_birds.forEach((bird) => {
                 if (bird.dataset.birdType == 1) {
@@ -47,7 +50,7 @@ export class Bomb {
             }, 1500);
         });
     }
-
+    // Drop the bomb down
     move = () => {
         const id = setInterval(() => {
             this.positionY += 20;
