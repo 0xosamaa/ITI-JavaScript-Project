@@ -138,8 +138,8 @@ body {
 
 .bomb {
     position: relative;
-    width: 64px;
-    height: 64px;
+    width: 128px;
+    height: 128px;
     transition: top 0.2s ease;
 }
 
