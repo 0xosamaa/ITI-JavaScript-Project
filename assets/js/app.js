@@ -33,7 +33,7 @@ const start_game = () => {
         y -= 5;
         container.style.transform = `translateY(${y}%)`;
         game_container.style.transform = `translateY(${y}%)`;
-        if (y <= -TRANSFORM_PERCENT) {
+        if (y <= TRANSFORM_PERCENT) {
             Bird.countdown();
             setTimeout(() => {
                 const bomb = new Bomb();
