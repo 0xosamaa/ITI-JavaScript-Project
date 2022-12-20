@@ -37,7 +37,7 @@ const start_game = () => {
             const modal = document.createElement('div');
             const modal_content = document.createElement('div');
             const modal_close = document.createElement('span');
-            const modal_text = document.createElement('p');
+            let modal_text = document.createElement('p');
 
             clearInterval(spawn_interval_id);
             music.pause();
@@ -67,9 +67,15 @@ const start_game = () => {
             if (Bird.score >= 500) {
                 music = new Audio('assets/music/win_gameover.wav');
                 modal_text.innerText = 'You Win';
+                modal_text = document.createElement('p');
+                modal_text.innerText = 'Score: ' + Bird.score;
+                modal_content.append(modal_text);
             } else {
                 music = new Audio('assets/music/lose_gameover.wav');
                 modal_text.innerText = 'You Lose';
+                modal_text = document.createElement('p');
+                modal_text.innerText = 'Score: ' + Bird.score;
+                modal_content.append(modal_text);
             }
             modal.style.display = 'block';
             music.play();
