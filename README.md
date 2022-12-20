@@ -4,7 +4,7 @@
 
 Shoot the green and brown birds to gain points and avoid the red birds to not lose points.
 
-Explode the bomb to kill all birds on your screen
+Explode the bomb to kill all birds on screen
 
 ## How to run
 
