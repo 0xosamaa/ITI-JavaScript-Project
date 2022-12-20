@@ -2,7 +2,7 @@ export class Bird {
     static #current_count = 0;
     static #killed_count = 0;
     static #score = 0;
-    static #time = 5;
+    static #time = 60;
     static get current_count() {
         return Bird.#current_count;
     }
