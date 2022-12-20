@@ -151,6 +151,15 @@ body {
     display: none;
 }
 
+table,
+td {
+    border: 1px solid black;
+}
+
+table {
+    width: 80%;
+}
+
 .modal {
     display: none;
     position: fixed;
