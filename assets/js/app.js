@@ -13,6 +13,22 @@ const howtowin = document.querySelector('.howtowin');
 const points_to_win = 50;
 howtowin.innerText = `Score ${points_to_win} To Win`;
 
+const save_score = (player, score) => {
+    let data = {
+        player,
+        score,
+    };
+    var a = [];
+    // Parse the serialized data back into an aray of objects
+    a = JSON.parse(localStorage.getItem('session')) || [];
+    // Push the new data (whether it be an object or anything else) onto the array
+    a.push(data);
+    // Alert the array value
+    alert(a); // Should be something like [Object array]
+    // Re-serialize the array back into a string and store it in localStorage
+    localStorage.setItem('session', JSON.stringify(a));
+};
+
 // Start game if name entered
 const start_game = () => {
     if (!name_input.value) return;
@@ -78,6 +94,8 @@ const start_game = () => {
             //     window.location.reload();
             // };
 
+            //Save score locally
+            save_score(player_name, Bird.score);
             // Check win or lose
             if (Bird.score >= points_to_win) {
                 music = new Audio('assets/music/win_gameover.wav');

@@ -1,18 +1,18 @@
-// const table = document.querySelector('table');
+const table = document.querySelector('table');
 
-// const scores = () => {
-//     return localStorage.getItem('session');
-// };
+const scores = () => {
+    return localStorage.getItem('session');
+};
 
-// const array = new Array(scores);
-// array.forEach((score) => {
-//     let tr = document.createElement('tr');
-//     let td = document.createElement('td');
-//     td.innerHTML = score;
-//     tr.append(td);
-//     table.append(tr);
-// });
+const array = JSON.parse(localStorage.getItem('session'));
 
-
-
-// export { save_score };
+array.forEach((score) => {
+    let tr = document.createElement('tr');
+    let td = document.createElement('td');
+    td.innerHTML = score.player;
+    tr.append(td);
+    td = document.createElement('td');
+    td.innerHTML = score.score;
+    tr.append(td);
+    table.append(tr);
+});
